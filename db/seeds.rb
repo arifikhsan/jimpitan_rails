@@ -17,4 +17,9 @@ if Village.count.zero?
   Village.create(name: 'desa rails')
 end
 
+if Family.count.zero?
+  village = Village.first
+  village.families.create(householder: 'pak rails')
+end
+
 puts 'seed done'
