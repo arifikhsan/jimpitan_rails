@@ -11,6 +11,9 @@ puts 'seed started'
 if User.count.zero?
   user = User.create(email: 'admin@example.com', password: '123456')
   user.admin!
+
+  village_manager = User.create(email: 'village_manager@example.com', password: '123456')
+  village_manager.user!
 end
 
 if Village.count.zero?
@@ -20,6 +23,16 @@ end
 if Family.count.zero?
   village = Village.first
   village.families.create(householder: 'pak rails')
+end
+
+if VillageManager.count.zero?
+  village = Village.first
+  manager = User.second
+
+  village_manager = VillageManager.new
+  village_manager.village = village
+  village_manager.manager = manager
+  village_manager.save
 end
 
 puts 'seed done'
