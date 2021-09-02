@@ -9,10 +9,14 @@
 puts 'seed started'
 
 if User.count.zero?
-  user = User.create(email: 'admin@example.com', password: '123456')
+  user = User.new(email: 'admin@example.com', password: '123456')
+  user.build_user_detail(name: 'admin')
+  user.save
   user.admin!
 
-  village_manager = User.create(email: 'village_manager@example.com', password: '123456')
+  village_manager = User.new(email: 'village_manager@example.com', password: '123456')
+  village_manager.build_user_detail(name: 'village_manager')
+  village_manager.save
   village_manager.user!
 end
 
@@ -38,7 +42,10 @@ end
 if PatrolMember.count.zero?
   7.times do |day|
     day_name = PatrolMember.day_in_weeks.key(day)
-    user = User.create(email: "user_#{day_name}@example.com", password: '123456')
+    user = User.new(email: "user_#{day_name}@example.com", password: '123456')
+    user.build_user_detail(name: "user_#{day_name}")
+    user.save
+
     village = Village.first
 
     pm = PatrolMember.new
