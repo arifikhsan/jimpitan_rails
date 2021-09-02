@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_113101) do
+ActiveRecord::Schema.define(version: 2021_09_02_123803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_09_02_113101) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["village_id"], name: "index_families_on_village_id"
+  end
+
+  create_table "patrol_members", force: :cascade do |t|
+    t.bigint "village_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "day_in_week"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_patrol_members_on_user_id"
+    t.index ["village_id"], name: "index_patrol_members_on_village_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,6 +67,8 @@ ActiveRecord::Schema.define(version: 2021_09_02_113101) do
   end
 
   add_foreign_key "families", "villages"
+  add_foreign_key "patrol_members", "users"
+  add_foreign_key "patrol_members", "villages"
   add_foreign_key "village_managers", "users"
   add_foreign_key "village_managers", "villages"
 end

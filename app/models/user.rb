@@ -6,4 +6,9 @@ class User < ApplicationRecord
          :trackable
 
   enum role: [:admin, :user]
+  after_initialize :set_default_role
+
+  def set_default_role
+    self.role ||= :user
+  end
 end

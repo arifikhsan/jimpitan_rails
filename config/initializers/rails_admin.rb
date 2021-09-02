@@ -38,4 +38,16 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'User' do
+    label 'User'
+  end
+
+  config.model 'Village' do
+    label 'Village'
+  end
+
+  config.model 'Family' do
+    label 'Family'
+  end
 end

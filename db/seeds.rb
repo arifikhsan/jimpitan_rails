@@ -35,4 +35,18 @@ if VillageManager.count.zero?
   village_manager.save
 end
 
+if PatrolMember.count.zero?
+  7.times do |day|
+    day_name = PatrolMember.day_in_weeks.key(day)
+    user = User.create(email: "user_#{day_name}@example.com", password: '123456')
+    village = Village.first
+
+    pm = PatrolMember.new
+    pm.village = village
+    pm.user = user
+    pm.day_in_week = day
+    pm.save
+  end
+end
+
 puts 'seed done'
