@@ -13,4 +13,8 @@ if User.count.zero?
   user.admin!
 end
 
+if Village.count.zero?
+  Village.create(name: 'desa rails')
+end
+
 puts 'seed done'
