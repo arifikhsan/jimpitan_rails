@@ -2,6 +2,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get '/', to: 'home#index'
+  get 'hello', to: 'home#hello'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 end

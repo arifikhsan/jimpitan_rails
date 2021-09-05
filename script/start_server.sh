@@ -1,2 +1,2 @@
 sudo service postgresql start
-rails server
+bundle exec rails server
