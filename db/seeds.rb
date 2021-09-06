@@ -56,4 +56,37 @@ if PatrolMember.count.zero?
   end
 end
 
+if Attendance.count.zero?
+  Attendance.statuses.each do |key, value|
+    village = Village.first
+    day_name = PatrolMember.day_in_weeks.keys.sample
+    user = User.find_by(email: "user_#{day_name}@example.com")
+    date = Time.now
+    status = key
+
+    Attendance.create(
+      village: village,
+      user: user,
+      date: date,
+      status: status
+    )
+  end
+end
+
+if Donation.count.zero?
+  Donation.contents.keys.each do |content|
+    village = Village.first
+    family = Family.first
+
+    donation = Donation.new
+    donation.village = village
+    donation.family = family
+    donation.date = Time.now.to_date
+    donation.content = content
+    donation.money_value = 500 if content == 'money'
+    donation.taken_on = Time.now
+    donation.save
+  end
+end
+
 puts 'seed done'

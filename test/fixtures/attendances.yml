@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  village: one
+  user: one
+  date: 2021-09-06
+  status: 1
+
+two:
+  village: two
+  user: two
+  date: 2021-09-06
+  status: 1
