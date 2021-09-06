@@ -39,15 +39,15 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model 'User' do
-    label 'User'
-  end
+  # config.model 'User' do
+  #   navigation_icon 'icon-user'
+  # end
 
-  config.model 'Village' do
-    label 'Village'
-  end
+  # config.model 'Village' do
+  #   navigation_label 'Village thing'
+  # end
 
-  config.model 'Family' do
-    label 'Family'
-  end
+  # config.model 'Family' do
+  #   parent Village
+  # end
 end
