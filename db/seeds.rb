@@ -26,7 +26,13 @@ end
 
 if Family.count.zero?
   village = Village.first
-  village.families.create(householder: 'pak rails')
+  village.families.create(
+    householder: 'pak slamet',
+    rt: 1,
+    rw: 2,
+    number: 3,
+    detail: 'pertama disini'
+  )
 end
 
 if VillageManager.count.zero?

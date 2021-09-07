@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 2021_09_06_051857) do
   create_table "families", force: :cascade do |t|
     t.bigint "village_id", null: false
     t.string "householder"
+    t.integer "rt"
+    t.integer "rw"
+    t.integer "number"
+    t.text "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["village_id"], name: "index_families_on_village_id"
