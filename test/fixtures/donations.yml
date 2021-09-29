@@ -3,15 +3,15 @@
 one:
   village: one
   family: one
-  date: 2021-09-06
-  content: 1
-  money_value: 1
-  taken_on: 2021-09-06 12:18:58
+  patrol_member: one
+  village_donation: one
+  date: 2021-09-29
+  taken_at: 2021-09-29 14:30:51
 
 two:
   village: two
   family: two
-  date: 2021-09-06
-  content: 1
-  money_value: 1
-  taken_on: 2021-09-06 12:18:58
+  patrol_member: two
+  village_donation: two
+  date: 2021-09-29
+  taken_at: 2021-09-29 14:30:51

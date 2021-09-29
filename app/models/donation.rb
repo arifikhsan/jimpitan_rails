@@ -1,6 +1,6 @@
 class Donation < ApplicationRecord
   belongs_to :village
   belongs_to :family
-
-  enum content: [:money, :rice, :empty]
+  belongs_to :patrol_member
+  belongs_to :village_donation
 end

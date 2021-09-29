@@ -56,9 +56,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.8"
-
 gem "rails_admin", "~> 2.2"
-
 gem "rails_admin_rollincode", "~> 1.3"
-
 gem "tailwindcss-rails", "~> 0.4.3"
