@@ -79,18 +79,42 @@ if Attendance.count.zero?
   end
 end
 
-if Donation.count.zero?
-  Donation.contents.keys.each do |content|
+if VillageDonation.count.zero?
+  VillageDonation.types.keys.each do |key, value|
     village = Village.first
-    family = Family.first
+    type = key
+    if key == 'empty'
+      title = 'Kosong'
+      value = 0
+    elsif key == 'money'
+      title = 'Uang 500'
+      value = 500
+    elsif key == 'rice'
+      title = 'Beras'
+      value = 1
+    else
+      title = 'Lainnya'
+      value = 1
+    end
 
+    VillageDonation.create(
+      village: village,
+      title: title,
+      value: value,
+      type: type
+    )
+  end
+end
+
+if Donation.count.zero?
+  3.times do
     donation = Donation.new
-    donation.village = village
-    donation.family = family
+    donation.village = Village.first
+    donation.family = Family.first
+    donation.patrol_member = PatrolMember.first
+    donation.village_donation = VillageDonation.sample
     donation.date = Time.now.to_date
-    donation.content = content
-    donation.money_value = 500 if content == 'money'
-    donation.taken_on = Time.now
+    donation.taken_at = Time.now
     donation.save
   end
 end
