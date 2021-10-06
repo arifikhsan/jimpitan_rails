@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "pry", "~> 0.14.1"
 end
 
 group :development do
@@ -59,3 +60,4 @@ gem "devise", "~> 4.8"
 gem "rails_admin", "~> 2.2"
 gem "rails_admin_rollincode", "~> 1.3"
 gem "tailwindcss-rails", "~> 0.4.3"
+gem "administrate", "~> 0.16.0"

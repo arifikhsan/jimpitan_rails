@@ -108,14 +108,14 @@ end
 
 if Donation.count.zero?
   3.times do
-    donation = Donation.new
-    donation.village = Village.first
-    donation.family = Family.first
-    donation.patrol_member = PatrolMember.first
-    donation.village_donation = VillageDonation.sample
-    donation.date = Time.now.to_date
-    donation.taken_at = Time.now
-    donation.save
+    Donation.create(
+      village: Village.first,
+      family: Family.first,
+      patrol_member: PatrolMember.first,
+      village_donation: VillageDonation.sample,
+      date: Time.now.to_date,
+      taken_at: Time.now
+    )
   end
 end
 
