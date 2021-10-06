@@ -63,3 +63,7 @@ gem "tailwindcss-rails", "~> 0.4.3"
 gem "administrate", "~> 0.16.0"
 
 gem "devise_invitable", "~> 2.0"
+
+gem "prawn", "~> 2.4"
+
+gem "rqrcode", "~> 2.1"

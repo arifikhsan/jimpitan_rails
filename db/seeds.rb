@@ -31,14 +31,16 @@ if Village.count.zero?
 end
 
 if Family.count.zero?
-  village = Village.first
-  village.families.create(
-    householder: 'pak slamet',
-    rt: 1,
-    rw: 2,
-    number: 3,
-    detail: 'pertama disini'
-  )
+  5.times do |index|
+    village = Village.first
+    village.families.create(
+      householder: "pak slamet #{index + 1}",
+      rt: 1 + index,
+      rw: 2 + 1 + index,
+      number: 3 + index,
+      detail: "penghuni ke-#{index + 1} di desa ini"
+    )
+  end
 end
 
 if VillageManager.count.zero?

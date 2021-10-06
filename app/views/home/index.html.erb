@@ -1,4 +1,4 @@
-<h1>Selamat datang di aplikasi Jimpitan, <%= current_user.email %>!</h1>
+<h1>Selamat datang di aplikasi Jimpitan, <%= current_user.name %>!</h1>
 
 <% if current_user.is_new %>
   <div class="mt-4">
@@ -31,11 +31,23 @@
     <p>Anda mengelola desa: <%= @current_user.manage_village.name %></p>
   </div>
   <div class="mt-4">
-    <p>Selanjutnya, tambahkan anggota ronda dan buat jadwal ronda di desa anda</p>
+    <p>Selanjutnya adalah:</p>
+    <ol class="list-decimal">
+      <li class="<%= 'line-through' if current_user.manage_village.patrol_members.present? %>">
+        Tambahkan anggota ronda
+      </li>
+      <li class="<%= 'line-through' if current_user.manage_village.village_donations.present? %>">
+        Buat jenis sumbangan
+      </li>
+      <li>Cetak kertas jimpitan</li>
+      <li>Download aplikasi jimpitan di playstore (untuk petugas ronda)</li>
+    </ol>
   </div>
-  <div class="mt-4">
-    <button>Print kertas ronda</button>
-  </div>
+  <% if current_user.manage_village.ready_to_print %>
+    <div class="mt-4">
+      <%= link_to "Cetak kertas jimpitan", families_paper_path, class: 'px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700' %>
+    </div>
+  <% end %>
 <% end %>
 
 <%= javascript_pack_tag 'home' %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Desain kertas jimpitan</h1>
+
+<div class="flex justify-between">
+  <div></div>
+  <%= link_to "Cetak kertas jimpitan", families_paper_path(format: :pdf), class: 'inline-block mt-6 px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700' %>
+</div>
+
+<div class="flex justify-center space-x-4 mt-4">
+  <div class="align-middle inline-block sm:px-6 lg:px-8">
+    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+      <table class="divide-y divide-x divide-gray-200">
+        <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-3 py-2 uppercase tracking-wider">
+            Tanggal
+          </th>
+          <th scope="col" class="px-3 py-2 uppercase tracking-wider">
+            Oktober
+          </th>
+        </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+        <% @dates.times do |date| %>
+          <tr class="text-center">
+            <td class="px-3 py-2 border-r">
+              <%= date + 1 %>
+            </td>
+            <td class="px-3 py-2">
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <p>QR code</p>
+    <div class="mt-4">
+      <%= @svg.html_safe %>
+    </div>
+  </div>
+</div>

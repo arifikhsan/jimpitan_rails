@@ -6,6 +6,32 @@ class FamiliesController < ApplicationController
     @families = Family.all
   end
 
+  def paper
+    @families = current_user.manage_village.families
+    @dates = Time.days_in_month(10, 2021)
+    qrcode = RQRCode::QRCode.new("http://github.com/")
+    @svg = qrcode.as_svg(
+      color: "000",
+      shape_rendering: "crispEdges",
+      module_size: 11,
+      standalone: true,
+      use_path: true
+    )
+
+    respond_to do |format|
+      # some other formats like: format.html { render :show }
+      format.html { render :paper }
+
+      format.pdf do
+        pdf = FamilyPdf.new
+        send_data pdf.render,
+                  filename: "export.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
+  end
+
   # GET /families/1 or /families/1.json
   def show
   end
