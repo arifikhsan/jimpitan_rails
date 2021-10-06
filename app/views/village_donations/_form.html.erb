@@ -1,0 +1,17 @@
+<%= form_with(model: village_donation) do |form| %>
+  <% if village_donation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(village_donation.errors.count, "error") %> prohibited this village_donation from being saved:</h2>
+
+      <ul>
+        <% village_donation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@ class CreateVillageDonations < ActiveRecord::Migration[6.1]
     create_table :village_donations do |t|
       t.references :village, null: false, foreign_key: true
       t.string :title
-      t.integer :type
+      t.integer :content
       t.integer :value
 
       t.timestamps

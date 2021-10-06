@@ -8,7 +8,7 @@
   <div class="mt-4">
     <%= form_with model: @village do |form| %>
       <div>
-        <%= form.label :name, "Nama desa" %>
+        <%= form.label :name, "Nama desa", class: 'block' %>
         <%= form.text_field :name, class: 'mt-3' %>
       </div>
       <%= form.submit 'Buat desa baru', class: 'mt-3' %>
@@ -20,21 +20,21 @@
   <div class="mt-4">
     <%= form_with model: @village do |form| %>
       <div>
-        <%= form.label :name, "Nama desa" %>
+        <%= form.label :name, "Nama desa", class: 'block' %>
         <%= form.text_field :name, class: 'mt-3' %>
       </div>
       <%= form.submit 'Cari desa', class: 'mt-3' %>
     <% end %>
   </div>
 <% elsif current_user.is_manager %>
-  <p>Anda mengelola desa:</p>
-  <ol>
-    <% @current_user.manage_villages.each do |village| %>
-      <li><%= village.name %></li>
-    <% end %>
-  </ol>
   <div class="mt-4">
-    <p>Selanjutnya, klik nama desa untuk mengelola jimpitan</p>
+    <p>Anda mengelola desa: <%= @current_user.manage_village.name %></p>
+  </div>
+  <div class="mt-4">
+    <p>Selanjutnya, tambahkan anggota ronda dan buat jadwal ronda di desa anda</p>
+  </div>
+  <div class="mt-4">
+    <button>Print kertas ronda</button>
   </div>
 <% end %>
 

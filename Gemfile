@@ -61,3 +61,5 @@ gem "rails_admin", "~> 2.2"
 gem "rails_admin_rollincode", "~> 1.3"
 gem "tailwindcss-rails", "~> 0.4.3"
 gem "administrate", "~> 0.16.0"
+
+gem "devise_invitable", "~> 2.0"

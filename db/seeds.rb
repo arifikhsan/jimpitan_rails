@@ -8,16 +8,22 @@
 
 puts 'seed started'
 
+if Role.count.zero?
+  %w[admin manager member guest].each do |name|
+    Role.create(name: name)
+  end
+end
+
 if User.count.zero?
   user = User.new(email: 'admin@example.com', password: '123456')
   user.build_user_detail(name: 'admin')
+  user.role = Role.admin
   user.save
-  user.admin!
 
   village_manager = User.new(email: 'village_manager@example.com', password: '123456')
   village_manager.build_user_detail(name: 'village_manager')
+  village_manager.role = Role.manager
   village_manager.save
-  village_manager.user!
 end
 
 if Village.count.zero?
@@ -80,9 +86,9 @@ if Attendance.count.zero?
 end
 
 if VillageDonation.count.zero?
-  VillageDonation.types.keys.each do |key, value|
+  VillageDonation.contents.keys.each do |key, _|
     village = Village.first
-    type = key
+    content = key
     if key == 'empty'
       title = 'Kosong'
       value = 0
@@ -101,7 +107,7 @@ if VillageDonation.count.zero?
       village: village,
       title: title,
       value: value,
-      type: type
+      content: content
     )
   end
 end
@@ -112,7 +118,7 @@ if Donation.count.zero?
       village: Village.first,
       family: Family.first,
       patrol_member: PatrolMember.first,
-      village_donation: VillageDonation.sample,
+      village_donation: VillageDonation.all.sample,
       date: Time.now.to_date,
       taken_at: Time.now
     )

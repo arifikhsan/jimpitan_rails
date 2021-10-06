@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sumbangan Desa</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nama</th>
+    <th>Jenis</th>
+    <th>Isi</th>
+    <th>Aksi</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @village_donations.each do |village_donation| %>
+    <tr>
+      <td><%= village_donation.title %></td>
+      <td><%= village_donation.content %></td>
+      <td><%= village_donation.value %></td>
+      <td>
+        <%= link_to 'Show', village_donation %>
+        <%= link_to 'Edit', edit_village_donation_path(village_donation) %>
+        <%= link_to 'Destroy', village_donation, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Village Donation', new_village_donation_path %>
